@@ -42,7 +42,7 @@ class CurlHttpClient implements HttpClient
      *
      * @param string $channelToken Access token of your channel.
      */
-    public function __construct($channelToken)
+    public function __construct()
     {
 //        $this->authHeaders = [
 //            "Authorization: Bearer $channelToken",

@@ -18,7 +18,7 @@
 
 namespace Bytom;
 
-use Bytom\HttpClient;
+use Bytom\HttpClient\CurlHttpClient;
 use Bytom\Response;
 
 
@@ -29,7 +29,7 @@ use Bytom\Response;
  */
 class BytomClient
 {
-    const DEFAULT_BYTOMD_URI = '127.0.0.1:9988';
+    const DEFAULT_BYTOMD_URI = '127.0.0.1:9888';
 
     /**
      * Constant for version string to include with requests. Currently 1.0.1.
@@ -41,7 +41,7 @@ class BytomClient
     /** @var string */
     private $channelSecret;
     /** @var string */
-    private $bytomUri;
+    private $url;
     /** @var HttpClient */
     private $httpClient;
 
@@ -51,15 +51,11 @@ class BytomClient
      * @param HTTPClient $httpClient HTTP client instance to use API calling.
      * @param array $args Configurations.
      */
-    public function __construct(HttpClient $httpClient, array $args)
+    public function __construct($url = self::DEFAULT_BYTOMD_URI)
     {
-        $this->httpClient = $httpClient;
-        $this->channelSecret = $args['channelSecret'];
-
-        $this->bytomUri = self::DEFAULT_BYTOMD_URI;
-        if (array_key_exists('bytomUri', $args) && !empty($args['bytomUri'])) {
-            $this->bytomUri = $args['endpointBase'];
-        }
+        $this->httpClient = new CurlHttpClient();
+        //$this->channelSecret = $args['channelSecret'];
+        $this->url = $url;
     }
 
     /**
@@ -71,7 +67,7 @@ class BytomClient
      */
     public function createKey($alias, $password)
     {
-        return $this->httpClient->post($this->bytomUri. '/create-key', ['alias' => $alias, 'password' => $password]);
+        return $this->httpClient->post($this->url. '/create-key', ['alias' => $alias, 'password' => $password]);
     }
 
 

@@ -27,12 +27,12 @@
   },
   "autoload": {
     "psr-4": {
-      "LINE\\": "src/"
+      "Bytom\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "LINE\\Tests\\": "tests/"
+      "Bytom\\Tests\\": "tests/"
     }
   }
 }

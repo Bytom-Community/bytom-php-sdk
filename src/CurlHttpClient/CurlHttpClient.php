@@ -33,7 +33,7 @@ use Bytom\Response;
 class CurlHttpClient implements HttpClient
 {
     /** @var array */
-   // private $authHeaders;
+    private $authHeaders = [];
     /** @var array */
     private $userAgentHeader;
 
@@ -42,11 +42,13 @@ class CurlHttpClient implements HttpClient
      *
      * @param string $channelToken Access token of your channel.
      */
-    public function __construct()
+    public function __construct($authToken)
     {
-//        $this->authHeaders = [
-//            "Authorization: Bearer $channelToken",
-//        ];
+        if(!empty($authToken)) {
+            $this->authHeaders = [
+                "Authorization: $authToken",
+            ];
+        }
 
         $this->userAgentHeader = [
             'User-Agent: Bytom-PHP-SDK/' . BytomClient::SDK_VERSION,
@@ -88,7 +90,7 @@ class CurlHttpClient implements HttpClient
     {
         $curl = new Curl($url);
 
-        $headers = array_merge($this->userAgentHeader, $additionalHeader);
+        $headers = array_merge($this->authHeaders, $this->userAgentHeader, $additionalHeader);
 
         $options = [
             CURLOPT_CUSTOMREQUEST => $method,

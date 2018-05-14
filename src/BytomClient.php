@@ -45,16 +45,18 @@ class BytomClient
     /** @var HttpClient */
     private $httpClient;
 
+    private $apiToken;
+
     /**
      * BytomClient constructor.
      *
      * @param HTTPClient $httpClient HTTP client instance to use API calling.
      * @param array $args Configurations.
      */
-    public function __construct($url = self::DEFAULT_BYTOMD_URI)
+    public function __construct($url = self::DEFAULT_BYTOMD_URI, $apiToken = "")
     {
-        $this->httpClient = new CurlHttpClient();
-        //$this->channelSecret = $args['channelSecret'];
+        $this->apiToken = $apiToken;
+        $this->httpClient = new CurlHttpClient($this->apiToken);
         $this->url = $url;
     }
 
@@ -68,6 +70,11 @@ class BytomClient
     public function createKey($alias, $password)
     {
         return $this->httpClient->post($this->url. '/create-key', ['alias' => $alias, 'password' => $password]);
+    }
+
+    public function createAccessToken($tokenId)
+    {
+        return $this->httpClient->post($this->url. '/create-access-token', ['id' => $tokenId]);
     }
 
 

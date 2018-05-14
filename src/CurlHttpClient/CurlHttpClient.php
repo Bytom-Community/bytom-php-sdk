@@ -44,11 +44,7 @@ class CurlHttpClient implements HttpClient
      */
     public function __construct($authToken)
     {
-        if(!empty($authToken)) {
-            $this->authHeaders = [
-                "Authorization: $authToken",
-            ];
-        }
+        $this->authHeaders = $authToken;
 
         $this->userAgentHeader = [
             'User-Agent: Bytom-PHP-SDK/' . BytomClient::SDK_VERSION,
@@ -90,7 +86,7 @@ class CurlHttpClient implements HttpClient
     {
         $curl = new Curl($url);
 
-        $headers = array_merge($this->authHeaders, $this->userAgentHeader, $additionalHeader);
+        $headers = array_merge($this->userAgentHeader, $additionalHeader);
 
         $options = [
             CURLOPT_CUSTOMREQUEST => $method,
@@ -99,6 +95,10 @@ class CurlHttpClient implements HttpClient
             CURLOPT_BINARYTRANSFER => true,
             CURLOPT_HEADER => true,
         ];
+        if(!empty($this->authHeaders)){
+            $options[CURLOPT_HTTPAUTH] = CURLAUTH_BASIC;
+            $options[CURLOPT_USERPWD] = $this->authHeaders;
+        }
 
         if ($method === 'POST') {
             if (empty($reqBody)) {

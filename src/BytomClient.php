@@ -39,13 +39,13 @@ class BytomClient
     const SDK_VERSION = '1.0.1';
 
     /** @var string */
-    private $channelSecret;
-    /** @var string */
     private $url;
+
     /** @var HttpClient */
     private $httpClient;
 
-    private $apiToken;
+    /** @var string */
+    private $authToken;
 
     /**
      * BytomClient constructor.
@@ -53,10 +53,10 @@ class BytomClient
      * @param HTTPClient $httpClient HTTP client instance to use API calling.
      * @param array $args Configurations.
      */
-    public function __construct($url = self::DEFAULT_BYTOMD_URI, $apiToken = "")
+    public function __construct($url = self::DEFAULT_BYTOMD_URI, $authToken = "")
     {
-        $this->apiToken = $apiToken;
-        $this->httpClient = new CurlHttpClient($this->apiToken);
+        $this->authToken = $authToken;
+        $this->httpClient = new CurlHttpClient($this->authToken);
         $this->url = $url;
     }
 

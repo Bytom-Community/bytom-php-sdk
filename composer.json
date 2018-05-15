@@ -8,7 +8,7 @@
   ],
   "type": "library",
   "homepage": "https://github.com/lxlxw/bytom-php-sdk",
-  "license": "Apache License Version 2.0",
+  "license": "MIT",
   "authors": [
     {
       "name": "lxlxw",

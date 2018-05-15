@@ -18,7 +18,7 @@
 
 namespace Bytom;
 
-use Bytom\HttpClient\CurlHttpClient;
+use Bytom\CurlHttpClient\CurlHttpClient;
 use Bytom\Response;
 
 
@@ -34,7 +34,7 @@ class BytomClient
      *
      * @var string
      */
-    const DEFAULT_BYTOMD_URI = '127.0.0.1:9888';
+    const DEFAULT_BYTOMD_URI = 'http://127.0.0.1:9888';
 
     /**
      * Constant for version string to include with requests. Currently 1.0.1.

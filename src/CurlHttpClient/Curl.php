@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace Bytom\HttpClient;
+namespace Bytom\CurlHttpClient;
 
 /**
  * cURL session manager

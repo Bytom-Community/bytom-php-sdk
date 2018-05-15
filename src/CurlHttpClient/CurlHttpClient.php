@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace Bytom\HttpClient;
+namespace Bytom\CurlHttpClient;
 
 use Bytom\Exception\CurlExecutionException;
 use Bytom\HttpClient;
@@ -117,6 +117,7 @@ class CurlHttpClient implements HttpClient
         }
 
         $info = $curl->getinfo();
+
         $httpStatus = $info['http_code'];
 
         $responseHeaderSize = $info['header_size'];

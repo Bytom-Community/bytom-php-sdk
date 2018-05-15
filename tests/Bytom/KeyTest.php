@@ -24,17 +24,34 @@ class KeyTest extends \PHPUnit_Framework_TestCase
 {
     public function testCreateKey()
     {
-        $alias = 'test_alias';
+        $alias = 'test_name';
         $pwd = '123456';
-        $bytom = new BytomClient();
+        $bytom = new BytomClient("http://10.98.23.17:9888");
         $res = $bytom->createKey($alias, $pwd);
+        $this->assertEquals(401, $res->getHTTPStatus());
 
+        $bytom = new BytomClient("http://10.98.23.17:9888", "lxlxw:24297444cf67c42557256ef7363d50ae92a3d43251d66240864dceb67faeddd9");
+        $res = $bytom->createKey($alias, $pwd);
         $this->assertEquals(200, $res->getHTTPStatus());
         $this->assertTrue($res->isSucceeded());
 
         $data = $res->getJSONDecodedBody();
-        $this->assertEquals('alias', $data['alias']);
-        $this->assertEquals('xpub', $data['xpub']);
-        $this->assertEquals('file', $data['file']);
+        $this->assertEquals('success', $data['status']);
+        $this->assertEquals($alias, $data['data']['alias']);
+    }
+
+    public function testListKeys()
+    {
+        $bytom = new BytomClient("http://10.98.23.17:9888");
+        $res = $bytom->listKeys();
+        $this->assertEquals(401, $res->getHTTPStatus());
+
+        $bytom = new BytomClient("http://10.98.23.17:9888", "lxlxw:24297444cf67c42557256ef7363d50ae92a3d43251d66240864dceb67faeddd9");
+        $res = $bytom->listKeys();
+        $this->assertEquals(200, $res->getHTTPStatus());
+        $this->assertTrue($res->isSucceeded());
+
+        $data = $res->getJSONDecodedBody();
+        $this->assertEquals('success', $data['status']);
     }
 }

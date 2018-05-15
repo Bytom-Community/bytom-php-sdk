@@ -42,5 +42,5 @@ interface HttpClient
      * @param array $data Request body.
      * @return  Response of API request.
      */
-    public function post($url, array $data);
+    public function post($url, $data = []);
 }

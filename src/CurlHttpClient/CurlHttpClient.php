@@ -34,6 +34,7 @@ class CurlHttpClient implements HttpClient
 {
     /** @var array */
     private $authHeaders = [];
+
     /** @var array */
     private $userAgentHeader;
 
@@ -69,7 +70,7 @@ class CurlHttpClient implements HttpClient
      * @param array $data Request body.
      * @return Response Response of API request.
      */
-    public function post($url, array $data)
+    public function post($url, $data = [])
     {
         return $this->sendRequest('POST', $url, ['Content-Type: application/json; charset=utf-8'], $data);
     }
@@ -82,7 +83,7 @@ class CurlHttpClient implements HttpClient
      * @return Response
      * @throws CurlExecutionException
      */
-    private function sendRequest($method, $url, array $additionalHeader, array $reqBody)
+    private function sendRequest($method, $url, $additionalHeader = [], $reqBody = [])
     {
         $curl = new Curl($url);
 
@@ -103,9 +104,8 @@ class CurlHttpClient implements HttpClient
         if ($method === 'POST') {
             if (empty($reqBody)) {
                 $options[CURLOPT_HTTPHEADER][] = 'Content-Length: 0';
-            } else {
-                $options[CURLOPT_POSTFIELDS] = json_encode($reqBody);
             }
+            $options[CURLOPT_POSTFIELDS] = json_encode($reqBody);
         }
 
         $curl->setoptArray($options);

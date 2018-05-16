@@ -38,7 +38,7 @@ Then create a composer.json file in your projects root folder, containing:
 ```json
 {
     "require": {
-        "parse/php-sdk" : "1.4.*"
+        "lxlxw/bytom-php-sdk" : "dev-master"
     }
 }
 ```

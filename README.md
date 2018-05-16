@@ -4,8 +4,8 @@ This SDK contains methods for easily interacting with the Bytom API.
 Below are examples to get you started. For more information, please see Bytom API reference
 documentation at https://github.com/Bytom/bytom/wiki
 
-[![Latest Version](https://img.shields.io/badge/releases-v1.0.1-green.svg)](https://github.com/lxlxw/bytom-php-sdk/releases)
-[![Total Downloads](https://img.shields.io/badge/packagist-v1.0.1-yellowgreen.svg)](https://packagist.org/packages/lxlxw/bytom-php-sdk)
+[![Latest Version](https://img.shields.io/badge/releases-v1.0.1-brightgreen.svg)](https://github.com/lxlxw/bytom-php-sdk/releases)
+[![Total Downloads](https://img.shields.io/badge/packagist-v1.0.1-orange.svg)](https://packagist.org/packages/lxlxw/bytom-php-sdk)
 
 ## Table of Contents
 - [Installation](#installation)
@@ -15,9 +15,6 @@ documentation at https://github.com/Bytom/bytom/wiki
 - [Usage](#usage)
     - [Usage examples](#usage-examples)
     - [All usage examples](#all-usage-examples)
-    - [Server Health Check](#server-health-check)
-    - [Http Clients](#http-clients)
-    - [Alternate CA files](#alternate-ca-file)
 - [Support and Feedback](#support-and-feedback)
 - [License](#license)
 
@@ -86,11 +83,11 @@ use Bytom\BytomClient;
 Here's how to send a message using the SDK:
 
 ```php
-# First, instantiate the SDK with your API credentials
+# First, instantiate the SDK Client
 
 # Local node, default url is `127.0.0.1:9888`
 $client = new BytomClient();
-# Or remote node
+# Remote node
 $client = new BytomClient('url', 'auth-token');
 
 # Now, request bytom api.
@@ -98,6 +95,7 @@ $alias = 'test_name';
 $pwd = '123456';
 $client->createKey($alias, $pwd);
 $data = $res->getJSONDecodedBody();
+```
 
 ### All usage examples
 

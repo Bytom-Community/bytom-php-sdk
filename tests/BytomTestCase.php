@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright 2016 LINE Corporation
  *
@@ -15,12 +14,8 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
+namespace Bytom\Tests;
 
-require __DIR__ . '/../vendor/autoload.php';
-
-define('URL', 'http://10.98.23.17:9888');
-define('USER', 'lxlxw');
-define('PWD', '24297444cf67c42557256ef7363d50ae92a3d43251d66240864dceb67faeddd9');
-define('TOKEN', USER.':'.PWD);
-
-error_reporting(-1);
+abstract class BytomTestCase extends \PHPUnit_Framework_TestCase
+{
+}

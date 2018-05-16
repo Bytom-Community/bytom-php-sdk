@@ -20,17 +20,17 @@ namespace Bytom\Tests;
 
 use Bytom\BytomClient;
 
-class KeyTest extends \PHPUnit_Framework_TestCase
+class KeyTest extends BytomTestCase
 {
     public function testCreateKey()
     {
         $alias = 'test_name';
         $pwd = '123456';
-        $bytom = new BytomClient("http://10.98.23.17:9888");
+        $bytom = new BytomClient(URL);
         $res = $bytom->createKey($alias, $pwd);
         $this->assertEquals(401, $res->getHTTPStatus());
 
-        $bytom = new BytomClient("http://10.98.23.17:9888", "lxlxw:24297444cf67c42557256ef7363d50ae92a3d43251d66240864dceb67faeddd9");
+        $bytom = new BytomClient(URL, TOKEN);
         $res = $bytom->createKey($alias, $pwd);
         $this->assertEquals(200, $res->getHTTPStatus());
         $this->assertTrue($res->isSucceeded());
@@ -42,11 +42,11 @@ class KeyTest extends \PHPUnit_Framework_TestCase
 
     public function testListKeys()
     {
-        $bytom = new BytomClient("http://10.98.23.17:9888");
+        $bytom = new BytomClient(URL);
         $res = $bytom->listKeys();
         $this->assertEquals(401, $res->getHTTPStatus());
 
-        $bytom = new BytomClient("http://10.98.23.17:9888", "lxlxw:24297444cf67c42557256ef7363d50ae92a3d43251d66240864dceb67faeddd9");
+        $bytom = new BytomClient(URL, TOKEN);
         $res = $bytom->listKeys();
         $this->assertEquals(200, $res->getHTTPStatus());
         $this->assertTrue($res->isSucceeded());

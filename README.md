@@ -93,7 +93,7 @@ $client = new BytomClient('url', 'auth-token');
 # Now, request bytom api.
 $alias = 'test_name';
 $pwd = '123456';
-$client->createKey($alias, $pwd);
+$res = $client->createKey($alias, $pwd);
 $data = $res->getJSONDecodedBody();
 ```
 

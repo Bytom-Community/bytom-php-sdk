@@ -19,6 +19,8 @@ Welcome please submit the issue in Github directly.
 
 ## Key API
 
+----
+
 #### createKey
 
 ```php
@@ -35,6 +37,8 @@ BytomClient::createKey($alias, $password);
 - `String` - *alias*, name of the key.
 - `String` - *xpub*, pubkey of the key.
 - `String` - *file*, path to the file of key.
+
+----
 
 #### listKeys
 
@@ -53,6 +57,8 @@ none
     - `String` - *alias*, name of the key.
     - `String` - *xpub*, pubkey of the key.
 
+----
+
 #### deleteKey
 
 ```php
@@ -67,6 +73,8 @@ BytomClient::deleteKey($xpub, $password);
 ##### Returns
 
 none if the key is deleted successfully.
+
+----
 
 #### resetKeyPassword
 
@@ -88,6 +96,8 @@ none if the key password is reset successfully.
 
 
 ## Account API
+
+----
 
 #### createAccount
 ```php

@@ -7,15 +7,15 @@ Welcome please submit the issue in Github directly.
 
 ## API methods
 
-* [`key-api`](#key-api)
-* [`account-api`](#account-api)
-* [`asset-api`](#asset-api)
-* [`transaction-api`](#transaction-api)
-* [`wallet-api`](#wallet-api)
-* [`access-token-api`](#access-token-api)
-* [`block-api`](#block-api)
-* [`mining-api`](#mining-api)
-* [`other-api`](#other-api)
+* [`Key API`](#key-api)
+* [`Account API`](#account-api)
+* [`Asset API`](#asset-api)
+* [`Transaction API`](#transaction-api)
+* [`Wallet API`](#wallet-api)
+* [`Access Token API`](#access-token-api)
+* [`Block API`](#block-api)
+* [`Mining API`](#mining-api)
+* [`Other API`](#other-api)
 
 ## Key API
 

@@ -20,18 +20,14 @@ namespace Bytom\Tests;
 
 use Bytom\BytomClient;
 
-class KeyTest extends BytomTestCase
+class AccountTest extends BytomTestCase
 {
-    public function testCreateKey()
+    public function testCreateAccount()
     {
+        $root_xpubs = [];
         $alias = 'test_name';
-        $pwd = '123456';
-        $bytom = new BytomClient(URL);
-        $res = $bytom->createKey($alias, $pwd);
-        $this->assertEquals(401, $res->getHTTPStatus());
-
         $bytom = new BytomClient(URL, TOKEN);
-        $res = $bytom->createKey($alias, $pwd);
+        $res = $bytom->createKey($root_xpubs, $alias, 1);
         $this->assertEquals(200, $res->getHTTPStatus());
         $this->assertTrue($res->isSucceeded());
 
@@ -40,14 +36,10 @@ class KeyTest extends BytomTestCase
         $this->assertEquals($alias, $data['data']['alias']);
     }
 
-    public function testListKeys()
+    public function testListAccounts()
     {
-        $bytom = new BytomClient(URL);
-        $res = $bytom->listKeys();
-        $this->assertEquals(401, $res->getHTTPStatus());
-
         $bytom = new BytomClient(URL, TOKEN);
-        $res = $bytom->listKeys();
+        $res = $bytom->listAccounts();
         $this->assertEquals(200, $res->getHTTPStatus());
         $this->assertTrue($res->isSucceeded());
 
@@ -55,12 +47,11 @@ class KeyTest extends BytomTestCase
         $this->assertEquals('success', $data['status']);
     }
 
-    public function testDeleteKey()
+    public function testDeleteAccount()
     {
-        $xpub = 'xpub';
-        $password = '123456';
+        $account_info = 'account';
         $bytom = new BytomClient(URL, TOKEN);
-        $res = $bytom->deleteKey($xpub, $password);
+        $res = $bytom->deleteAccount($account_info);
         $this->assertEquals(200, $res->getHTTPStatus());
         $this->assertTrue($res->isSucceeded());
 

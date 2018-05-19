@@ -109,7 +109,7 @@ If you find a bug, please submit the issue in Github directly.
 
 ## Contact
 
-- Mail：[x@xwlin.com](x@xwlin.com)
+- Email：<x@xwlin.com>
 
 ## License
 

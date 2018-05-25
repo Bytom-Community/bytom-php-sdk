@@ -8,7 +8,7 @@ documentation at https://github.com/Bytom/bytom/wiki
 [![Total Downloads](https://img.shields.io/badge/packagist-v1.0.1-orange.svg)](https://packagist.org/packages/lxlxw/bytom-php-sdk)
 
 [ [English](https://github.com/lxlxw/bytom-php-sdk)
-| [中文]()
+| [中文](https://github.com/lxlxw/bytom-php-sdk/blob/master/doc/cn.md)
  ]
  
 ## Table of Contents

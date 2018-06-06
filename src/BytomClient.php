@@ -315,16 +315,16 @@ class BytomClient
     /**
      * List transactions
      *
-     * @param string $tx_id, transaction id, hash of transaction.
+     * @param string $id, transaction id, hash of transaction.
      * @param string $account_id, id of account.
      * @param bool $detail , flag of required transactions data ,default false (only return transaction summary)
      * @return Response
      */
-    public function listTransactions($tx_id = "", $account_id = "", $detail = false)
+    public function listTransactions($id = "", $account_id = "", $detail = false)
     {
         $data = [];
-        if(empty($tx_id)) $data = ['tx_id' => $tx_id, 'detail' => $detail];
-        if(empty($account_id)) $data = ['account_id' => $account_id, 'detail' => $detail];
+        if(!empty($tx_id)) $data = ['id' => $id, 'detail' => $detail];
+        if(!empty($account_id)) $data = ['account_id' => $account_id, 'detail' => $detail];
         return $this->httpClient->post($this->url. '/list-transactions', $data);
     }
 
